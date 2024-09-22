@@ -45,7 +45,7 @@ export default function Navbar() {
     { scope: headerRef }
   )
   return (
-    <header ref={headerRef} className='sticky top-0 py-8 z-50'>
+    <header ref={headerRef} className='sticky top-0 pt-4 z-50'>
       <nav id='nav' className='p-8 container bg-customwhite rounded-[24px] mt-8 mb-6 flex justify-between items-center'>
           <AnimatePresence>
             {isOpen && <Menu />}

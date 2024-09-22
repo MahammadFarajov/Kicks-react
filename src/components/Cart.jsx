@@ -20,8 +20,8 @@ export default function Cart() {
             <p className='text-customblack font-semibold text-[14px] opacity-80'>Enjoy up to 60% off thousands of styles during the End of Year sale - while suppiles last. No code needed.</p>
             <p className='text-customblack font-semibold opacity-80'>Join us  or Sign-in</p>
         </div>
-        <div className='flex justify-between gap-[47px] md:flex-row mb-5 sm:flex-col items-center w-full px-5'>
-              <div className='bg-customwhite flex flex-col gap-12 rounded-2xl p-6'>
+          <div className='flex justify-betweenr gap-[47px] md:flex-row mb-5 sm:flex-col items-center w-full px-5'>
+              {/* <div className='bg-customwhite flex flex-col gap-12 rounded-2xl p-6'>
                 <div className='flex flex-col gap-2'>
                     <p className='text-[32px] text-customblack font-semibold'>Your Bag</p>
                     <p className='text-customblack font-semibold opacity-80'>Items in your bag not reserved- check out now to make them yours.</p>
@@ -57,9 +57,9 @@ export default function Cart() {
                         </div>
                     </div>
                 </div>
-              </div>
+              </div> */}
               {cartItems.map((item) => <Productadd key={item.id} data={item} />)}
-            <div className='md:flex md:flex-col sm:bg-customwhite sm:w-full sm:p-4 rounded-2xl md:w-auto md:bg-transparent md:gap-6'>
+            <div className='md:flex ml-auto md:flex-col sm:bg-customwhite sm:w-full sm:p-4 rounded-2xl md:w-auto md:bg-transparent md:gap-6'>
                 <p className='text-[32px] text-customblack mr-40 font-semibold'>Order Summary </p>
                 <div className='flex flex-col gap-4'>
                     <div className='flex justify-between items-center'>
@@ -82,7 +82,7 @@ export default function Cart() {
                 <button className='font-medium flex justify-center w-full text-white text-[14px] bg-customblack uppercase py-[15.5px] px-[32px] rounded-[5px]'>Checkout</button>
                 <p className='text-customblack font-semibold w-fit border-b border-b-customblack text-[14px]'>User a promo code</p>
             </div>
-        </div>
+          </div>
         <div className='flex flex-col gap-8'>
             <div className='flex justify-between items-center'>
                 <p className='text-5xl text-customblack font-semibold'>You may also like</p>

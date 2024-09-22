@@ -7,7 +7,8 @@ import { LuCheck } from 'react-icons/lu';
 export default function Productadd( { data } ) {
     const {top, name, img, button, id} = data;
     const { cartItems, addToCart, removeFromCart } = useCartStore()
-    const isInCart = cartItems.filter((item) => item.id === id.length > 0)
+
+    const isInCart = cartItems.filter((item) => item.id === id).length > 0
     console.log(isInCart);
   return (
     <div className='flex flex-col items-center relative gap-6'>
@@ -21,7 +22,7 @@ export default function Productadd( { data } ) {
                 } else{
                     addToCart(data) 
                 }
-            }}  to={"/product"} className='mt-6 font-medium flex justify-center text-white text-[14px] bg-customblack uppercase py-[15.5px] px-[32px] rounded-[5px]'>{button} {isInCart ? (<LuCheck size={24} color='#FFA52F' />) : ("")}</Link>
+            }}  to={"/product"} className='mt-6 cursor-pointer items-center gap-2 font-medium flex justify-center text-white text-[14px] bg-customblack uppercase py-[15.5px] px-[32px] rounded-[5px]'>{button} {isInCart ? (<LuCheck size={24} color='#FFA52F' />) : ("")}</Link>
         </div>
     </div>  
   )

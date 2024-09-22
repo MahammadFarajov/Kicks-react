@@ -17,15 +17,20 @@ import kickslogo from "../assets/Group (7).png"
 import kickslogobig from "../assets/Logo (3).png" 
 import { FaFacebook, FaInstagram, FaStar, FaTiktok, FaTwitter } from 'react-icons/fa'
 import axios from 'axios'
-import useCartStore from '../hooks/useCart'
 import Productadd from './Productadd'
+import { div } from 'framer-motion/client'
 export default function Product() {
+  const [curr, setCurr] = useState(0)
   const [productsadd, SetProductsadd] = useState(null)
   useEffect(() => {
     axios.get("http://localhost:3000/productsadd").then((res) => {
       SetProductsadd(res.data)
     });
   }, [])
+  const prev = () =>
+    setCurr((curr) => (curr === 0 ? productsadd.length - 1 : curr - 1))
+  const next = () =>
+    setCurr((curr) => (curr === productsadd.length - 1 ? 0 : curr + 1))
   return (
     <div className='flex flex-col w-full container mt-8'>
         <div className='md:flex md:justify-between  md:mb-[128px]'>
@@ -97,24 +102,27 @@ export default function Product() {
           <div className='flex justify-between items-center'>
                   <p className='text-5xl text-customblack font-semibold'>You may also like</p>
                   <div className='flex items-center gap-4 mt-auto'>
-                      <button className='rounded-lg bg-customblack transition-colors text-customwhite duration-150 hover:bg-customgraydark px-[10.5px] py-[8.5px]'><MdKeyboardArrowLeft size={24} /></button>
-                      <button className='rounded-lg bg-customblack transition-colors text-customwhite duration-150 hover:bg-customgraydark px-[10.5px] py-[8.5px]'><MdKeyboardArrowRight size={24} /></button>
+                      <button onClick={prev} className='rounded-lg cursor-pointer bg-customblack transition-colors text-customwhite duration-150 hover:bg-customgraydark px-[10.5px] py-[8.5px]'><MdKeyboardArrowLeft size={24} /></button>
+                      <button onClick={next} className='rounded-lg cursor-pointer bg-customblack transition-colors text-customwhite duration-150 hover:bg-customgraydark px-[10.5px] py-[8.5px]'><MdKeyboardArrowRight size={24} /></button>
                   </div>
               </div>
-              <div className='md:flex md:items-center md:justify-between sm:grid sm:grid-cols-2 gap-4'>
-                {productsadd?.map((productadd) => (
-                  <Productadd data={productadd} key={productadd.key} />
-                ))}
+              <div className='overflow-x-hidden'>
+                <div className='flex transition-transform ease-out duration-500' style={{ transform: `translateX(-${curr * 100}%)` }}>
+                  <div className='md:flex w-screen md:items-center md:justify-between sm:grid sm:grid-cols-2 gap-4'>
+                    {productsadd?.map((productadd) => (
+                      <Productadd data={productadd} key={productadd.key} />
+                    ))}
+                  </div>              
+                </div>
               </div>
           </div>
-          <div className='w-full flex justify-center mb-[60px] items-center'>
-              <div className='flex items-center gap-2'>
-                  <div className='bg-customblack opacity-25 w-10 h-1 rounded-lg hover:opacity-100 hover:bg-customblue'></div>
-                  <div className='bg-customblack opacity-25 w-10 h-1 rounded-lg hover:opacity-100 hover:bg-customblue'></div>
-                  <div className='bg-customblack opacity-25 w-10 h-1 rounded-lg hover:opacity-100 hover:bg-customblue'></div>
-                  <div className='bg-customblack opacity-25 w-10 h-1 rounded-lg hover:opacity-100 hover:bg-customblue'></div>
-              </div>
-        </div>
+          <div className='w-full flex justify-center my-[60px] items-center'>
+            <div className='flex items-center gap-2'>
+            {productsadd.map((_, i) => (
+                <div className={`transition-all bg-customblack w-8 h-1 rounded-lg ${curr === i ? "bg-customblue bg-opacity-100 p-[3px]" : "bg-customblack bg-opacity-20"}`}></div>
+            ))}
+            </div>
+          </div>
         <div className='rounded-[48px] w-full relative overflow-hidden container h-[931px] sm:h-[1489px] bg-customblue'>
         <div className='flex pt-16 pl-[72px] sm:flex-col md:flex-row sm:gap-10  md:items-center md:justify-between'>
           <div className='flex flex-col gap-8'>

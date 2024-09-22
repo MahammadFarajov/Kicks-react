@@ -10,7 +10,7 @@ export default function Productmain( { data } ) {
         <img src={shoead} className='border-8 w-full border-customwhite rounded-[45px]' alt="" />
         <div className='flex flex-col gap-4'>
             <p className='text-customblack text-[24px] font-semibold'>{name}</p>
-            <Link to={"/product"} className='mt-6 font-medium flex justify-center text-white text-[14px] bg-customblack uppercase py-[15.5px] px-[32px] rounded-[5px]'>{button1}<span className='text-customorange text-[14px]'>{button2}</span></Link>
+            <Link to={"/product"} className='mt-6 font-medium flex justify-center gap-2 text-white text-[14px] bg-customblack uppercase py-[15.5px] px-[32px] rounded-[5px]'>{button1}<span className='text-customorange text-[14px]'>{button2}</span></Link>
         </div>
     </div>  
   )
