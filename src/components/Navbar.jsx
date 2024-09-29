@@ -45,7 +45,7 @@ export default function Navbar() {
     { scope: headerRef }
   )
   return (
-    <header ref={headerRef} className='sticky top-0 pt-4 z-50'>
+    <header ref={headerRef} className='sticky sm:px-4 top-0 md:pt-4 z-50'>
       <nav id='nav' className='p-8 container bg-customwhite rounded-[24px] mt-8 mb-6 flex justify-between items-center'>
           <AnimatePresence>
             {isOpen && <Menu />}
@@ -100,7 +100,6 @@ export default function Navbar() {
             <li className='list-none text-[#232321] font-semibold flex items-center gap-1'>Women <MdKeyboardArrowDown /></li>
         </ul>
         <img id='logo' src={Logo} className='sm:hidden md:block' alt="" />
-        <img src={Logo} className='sm:block md:hidden' alt="" />
         <ul className='flex md:gap-10 sm:gap-[10.5px] items-center'>
             <li className='sm:hidden md:block'><IoIosSearch size={24} /></li>
             <Link to={"/cart"}><HiUser size={24} /></Link>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import shoead from "../assets/Rectangle 5.png"
 import useCartStore from '../hooks/useCart';
 import { LuCheck } from 'react-icons/lu';
+import toast from 'react-hot-toast';
 
 export default function Productadd( { data } ) {
     const {top, name, img, button, id} = data;
@@ -21,6 +22,7 @@ export default function Productadd( { data } ) {
                     removeFromCart(data) 
                 } else{
                     addToCart(data) 
+                    toast.success('Successfully Added To Cart!');
                 }
             }}  to={"/product"} className='mt-6 cursor-pointer items-center gap-2 font-medium flex justify-center text-white text-[14px] bg-customblack uppercase py-[15.5px] px-[32px] rounded-[5px]'>{button} {isInCart ? (<LuCheck size={24} color='#FFA52F' />) : ("")}</Link>
         </div>
